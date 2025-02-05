@@ -1,14 +1,4 @@
-import React from 'react';
 
-const Home: React.FC = () => {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900">
       {/* Navigation Bar */}
       <header className="bg-blue-600 text-white py-4 shadow-md">
