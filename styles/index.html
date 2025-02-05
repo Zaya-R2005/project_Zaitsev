@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Облачное Хранение</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen bg-gray-50 flex flex-col">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white p-4">
+      <h1 class="text-center text-2xl font-bold">Облачное Хранение</h1>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="flex-grow flex flex-col items-center justify-center p-6">
+      <h2 class="text-4xl font-bold mb-4 text-gray-800">Ваши файлы, всегда под рукой</h2>
+      <p class="text-lg text-gray-600 mb-8 text-center max-w-xl">
+        Безопасное и удобное облачное хранилище для ваших самых важных данных. Зарегистрируйтесь или войдите, чтобы начать.
+      </p>
+
+      <!-- Toggle buttons -->
+      <div class="mb-6">
+        <button id="loginBtn" class="px-4 py-2 mr-2 rounded bg-blue-600 text-white">Вход</button>
+        <button id="registerBtn" class="px-4 py-2 rounded bg-white text-blue-600 border border-blue-600">Регистрация</button>
+      </div>
+
+      <!-- Forms Container -->
+      <div class="w-full max-w-md bg-white p-8 rounded shadow">
+        <!-- Login Form -->
+        <form id="loginForm" class="space-y-6">
+          <div>
+            <label for="loginEmail" class="block text-gray-700">Электронная почта</label>
+            <input id="loginEmail" type="email" required class="mt-1 block w-full border border-gray-300 rounded p-2" />
+          </div>
+          <div>
+            <label for="loginPassword" class="block text-gray-700">Пароль</label>
+            <input id="loginPassword" type="password" required class="mt-1 block w-full border border-gray-300 rounded p-2" />
+          </div>
+          <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Войти</button>
+        </form>
+
+        <!-- Registration Form -->
+        <form id="registerForm" class="space-y-6 hidden">
+          <div>
+            <label for="regUsername" class="block text-gray-700">Имя пользователя</label>
+            <input id="regUsername" type="text" required class="mt-1 block w-full border border-gray-300 rounded p-2" />
+          </div>
+          <div>
+            <label for="regEmail" class="block text-gray-700">Электронная почта</label>
+            <input id="regEmail" type="email" required class="mt-1 block w-full border border-gray-300 rounded p-2" />
+          </div>
+          <div>
+            <label for="regPassword" class="block text-gray-700">Пароль</label>
+            <input id="regPassword" type="password" required class="mt-1 block w-full border border-gray-300 rounded p-2" />
+          </div>
+          <div>
+            <label for="regConfirmPassword" class="block text-gray-700">Подтвердите пароль</label>
+            <input id="regConfirmPassword" type="password" required class="mt-1 block w-full border border-gray-300 rounded p-2" />
+          </div>
+          <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Зарегистрироваться</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 text-gray-700 p-4 text-center">
+      <p>© 2023 Облачное Хранение. Все права защищены.</p>
+    </footer>
+
+    <script>
+      // Get form elements and buttons
+      const loginForm = document.getElementById('loginForm');
+      const registerForm = document.getElementById('registerForm');
+      const loginBtn = document.getElementById('loginBtn');
+      const registerBtn = document.getElementById('registerBtn');
+
+      // Toggle to show login form
+      loginBtn.addEventListener('click', function () {
+        loginForm.classList.remove('hidden');
+        registerForm.classList.add('hidden');
+        loginBtn.classList.add('bg-blue-600', 'text-white');
+        loginBtn.classList.remove('bg-white', 'text-blue-600', 'border');
+        registerBtn.classList.add('bg-white', 'text-blue-600', 'border', 'border-blue-600');
+        registerBtn.classList.remove('bg-blue-600', 'text-white');
+      });
+
+      // Toggle to show registration form
+      registerBtn.addEventListener('click', function () {
+        registerForm.classList.remove('hidden');
+        loginForm.classList.add('hidden');
+        registerBtn.classList.add('bg-blue-600', 'text-white');
+        registerBtn.classList.remove('bg-white', 'text-blue-600', 'border');
+        loginBtn.classList.add('bg-white', 'text-blue-600', 'border', 'border-blue-600');
+        loginBtn.classList.remove('bg-blue-600', 'text-white');
+      });
+
+      // Handle login form submission
+      loginForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value;
+        alert('Logged in with email: ' + email);
+      });
+
+      // Handle registration form submission
+      registerForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const username = document.getElementById('regUsername').value;
+        const password = document.getElementById('regPassword').value;
+        const confirmPassword = document.getElementById('regConfirmPassword').value;
+        if (password !== confirmPassword) {
+          alert('Passwords do not match');
+          return;
+        }
+        alert('Registered user: ' + username);
+      });
+    </script>
+  </body>
+</html>
