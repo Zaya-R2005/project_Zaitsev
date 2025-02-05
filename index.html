@@ -1,103 +1,158 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Home: React.FC = () => {
-  const [email, setEmail] = useState<string>('');
-  const [subscribed, setSubscribed] = useState<boolean>(false);
-
-  const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (email) {
-      setSubscribed(true);
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900">
       {/* Navigation Bar */}
-      <header className="bg-blue-600 text-white py-4">
+      <header className="bg-blue-600 text-white py-4 shadow-md">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold">CloudSolutions</h1>
           <nav>
             <ul className="flex space-x-6">
-              <li><a href="#home" className="hover:text-blue-300">Главная</a></li>
-              <li><a href="#features" className="hover:text-blue-300">Возможности</a></li>
-              <li><a href="#pricing" className="hover:text-blue-300">Цены</a></li>
-              <li><a href="#contact" className="hover:text-blue-300">Контакты</a></li>
+              <li>
+                <a
+                  href="#home"
+                  onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
+                  className="hover:text-blue-300 transition-colors"
+                >
+                  Главная
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#features"
+                  onClick={(e) => { e.preventDefault(); scrollToSection('features'); }}
+                  className="hover:text-blue-300 transition-colors"
+                >
+                  Возможности
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#pricing"
+                  onClick={(e) => { e.preventDefault(); scrollToSection('pricing'); }}
+                  className="hover:text-blue-300 transition-colors"
+                >
+                  Цены
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
+                  className="hover:text-blue-300 transition-colors"
+                >
+                  Контакты
+                </a>
+              </li>
             </ul>
           </nav>
         </div>
       </header>
 
       {/* Hero Section */}
-      <main className="flex-grow">
-        <section id="home" className="bg-blue-50 py-16">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl font-extrabold text-blue-700 mb-4">Облачные Технологии</h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Решения для управления IT-инфраструктурой и обработки данных в облаке.
-            </p>
-            <button className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition-colors">
-              Узнать подробнее
-            </button>
-          </div>
-        </section>
+      <section id="home" className="bg-blue-50 py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-extrabold text-blue-700 mb-4">Облачные Технологии</h2>
+          <p className="text-lg text-gray-600 mb-8">
+            Инновационные решения для вашего бизнеса в облаке.
+          </p>
+          <button
+            onClick={() => scrollToSection('features')}
+            className="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition-colors"
+          >
+            Узнать подробнее
+          </button>
+        </div>
+      </section>
 
-        {/* Features Section */}
-        <section id="features" className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <h3 className="text-3xl font-bold text-center text-blue-700 mb-12">Наши Услуги</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-blue-50 p-6 rounded-lg shadow-md text-center">
-                <div className="mx-auto mb-4 w-16 h-16 bg-gray-200 border-2 border-dashed rounded-xl"></div>
-                <h4 className="text-xl font-semibold mb-2">Облачное Хранилище</h4>
-                <p className="text-gray-600">Надежное хранение данных с высокой доступностью.</p>
-              </div>
-              <div className="bg-blue-50 p-6 rounded-lg shadow-md text-center">
-                <div className="mx-auto mb-4 w-16 h-16 bg-gray-200 border-2 border-dashed rounded-xl"></div>
-                <h4 className="text-xl font-semibold mb-2">Облачные Вычисления</h4>
-                <p className="text-gray-600">Масштабируемые вычислительные мощности для ваших задач.</p>
-              </div>
-              <div className="bg-blue-50 p-6 rounded-lg shadow-md text-center">
-                <div className="mx-auto mb-4 w-16 h-16 bg-gray-200 border-2 border-dashed rounded-xl"></div>
-                <h4 className="text-xl font-semibold mb-2">Безопасность в Облаке</h4>
-                <p className="text-gray-600">Обеспечение максимальной защиты ваших данных.</p>
-              </div>
+      {/* Features Section */}
+      <section id="features" className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h3 className="text-3xl font-bold text-center text-blue-700 mb-12">Возможности</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-blue-50 p-6 rounded-lg shadow-md text-center">
+              <div className="mx-auto mb-4 w-16 h-16 bg-gray-200 border-2 border-dashed rounded-xl"></div>
+              <h4 className="text-xl font-semibold mb-2">Облачное Хранилище</h4>
+              <p className="text-gray-600">Надежное хранение данных с высокой доступностью.</p>
+            </div>
+            <div className="bg-blue-50 p-6 rounded-lg shadow-md text-center">
+              <div className="mx-auto mb-4 w-16 h-16 bg-gray-200 border-2 border-dashed rounded-xl"></div>
+              <h4 className="text-xl font-semibold mb-2">Облачные Вычисления</h4>
+              <p className="text-gray-600">Масштабируемые ресурсы для обработки сложных задач.</p>
+            </div>
+            <div className="bg-blue-50 p-6 rounded-lg shadow-md text-center">
+              <div className="mx-auto mb-4 w-16 h-16 bg-gray-200 border-2 border-dashed rounded-xl"></div>
+              <h4 className="text-xl font-semibold mb-2">Безопасность</h4>
+              <p className="text-gray-600">Передовые технологии защиты ваших данных.</p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Subscription Section */}
-        <section id="pricing" className="py-16 bg-blue-50">
-          <div className="container mx-auto px-4 text-center">
-            <h3 className="text-2xl font-bold text-blue-700 mb-4">Подпишитесь на новости</h3>
-            {subscribed ? (
-              <p className="text-green-600 font-semibold">Спасибо за подписку!</p>
-            ) : (
-              <form onSubmit={handleSubscribe} className="flex flex-col items-center space-y-4">
-                <input
-                  type="email"
-                  placeholder="Введите ваш email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full max-w-sm px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
-                >
-                  Подписаться
-                </button>
-              </form>
-            )}
+      {/* Pricing Section */}
+      <section id="pricing" className="py-16 bg-blue-50">
+        <div className="container mx-auto px-4 text-center">
+          <h3 className="text-2xl font-bold text-blue-700 mb-8">Цены</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-200">
+              <h4 className="text-xl font-semibold mb-4">Basic</h4>
+              <p className="text-gray-600 text-3xl font-bold mb-4">
+                $9<span className="text-base font-medium">/mo</span>
+              </p>
+              <ul className="text-gray-600 mb-4 space-y-2">
+                <li>1 User</li>
+                <li>5 Projects</li>
+                <li>Email Support</li>
+              </ul>
+              <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                Выбрать
+              </button>
+            </div>
+            <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-200">
+              <h4 className="text-xl font-semibold mb-4">Pro</h4>
+              <p className="text-gray-600 text-3xl font-bold mb-4">
+                $29<span className="text-base font-medium">/mo</span>
+              </p>
+              <ul className="text-gray-600 mb-4 space-y-2">
+                <li>10 Users</li>
+                <li>50 Projects</li>
+                <li>Priority Support</li>
+              </ul>
+              <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                Выбрать
+              </button>
+            </div>
+            <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-200">
+              <h4 className="text-xl font-semibold mb-4">Enterprise</h4>
+              <p className="text-gray-600 text-3xl font-bold mb-4">
+                $99<span className="text-base font-medium">/mo</span>
+              </p>
+              <ul className="text-gray-600 mb-4 space-y-2">
+                <li>Unlimited Users</li>
+                <li>Unlimited Projects</li>
+                <li>24/7 Support</li>
+              </ul>
+              <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                Выбрать
+              </button>
+            </div>
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
 
-      {/* Footer */}
-      <footer id="contact" className="bg-blue-600 py-4">
+      {/* Footer / Contacts */}
+      <footer id="contact" className="bg-blue-600 py-6">
         <div className="container mx-auto px-4 text-center text-white">
-          &copy; {new Date().getFullYear()} CloudSolutions. Все права защищены.
+          <p className="mb-2">Свяжитесь с нами: info@cloudsolutions.com</p>
+          <p>© {new Date().getFullYear()} CloudSolutions. Все права защищены.</p>
         </div>
       </footer>
     </div>
